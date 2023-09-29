@@ -27,11 +27,11 @@
         foreach ($students as $student) { ?>
             <li class="studenti__list">
                 <ul class="studenti__list-student">
-                    <li>Broj Indeksa: <?php echo $student['broj_indeksa']; ?></li>
+                    <li>Broj Indeksa: <span class="studentId"><?php echo $student['broj_indeksa']; ?> </span></li>
                     <li>Ime: <?php echo $student['ime']; ?></li>
                     <li>Prezime: <?php echo $student['prezime']; ?> </li>
                     <li>Prosek: <?php echo $student['prosek']; ?></li>
-                    <li><input type="button" class="studenti__list-student--btn" name="brisanje" value="Delete" onsubmit="deleteEntity()"></input>
+                    <input type="button" class="deleteButton studenti__list-student--btn" name="brisanje" value="Delete" onsubmit="deleteEntity()"></input>
                 </ul>
             </li>
         <?php }
@@ -45,7 +45,7 @@
     <?php $conn = null; ?>
 
 </body>
-<script src="prevent.js"></script>
-<script src="provera.js"></script>
+<script src="CRUD.js"></script>
+<script src="delete.js"></script>
 
 </html>

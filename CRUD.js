@@ -15,6 +15,35 @@ async function postData(url = "", data = {}) {
 	return response.json();
 }
 
+function deleteButtonClick(deleteButton) {
+	deleteButton.addEventListener("click", (event) => {
+		event.preventDefault();
+
+		const studentId = deleteButton.parentElement.querySelector(".studentId").innerText;
+
+		const xhr = new XMLHttpRequest();
+		const url = "http://localhost/probni-projekat/delete.php";
+
+		xhr.open("POST", url, true);
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+		xhr.onload = function () {
+			if (xhr.status >= 200 && xhr.status < 400) {
+				console.log(xhr.responseText);
+				deleteButton.parentElement.parentElement.remove();
+			} else {
+				console.error("Error:", xhr.responseText);
+			}
+		};
+
+		xhr.onerror = function () {
+			console.error("Network Error");
+		};
+
+		xhr.send(`broj_indeksa=${studentId}`);
+	});
+}
+
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
 
@@ -24,9 +53,6 @@ form.addEventListener("submit", (e) => {
 		formData[input.name] = input.value;
 	}
 
-	/*if (!required()) {
-		return;
-	}*/
 	const loader = document.querySelector(".loader");
 	loader.classList.add("active");
 
@@ -38,6 +64,7 @@ form.addEventListener("submit", (e) => {
 			const wrap = document.createElement("li");
 			const prom = document.createElement("ul");
 			const elId = document.createElement("li");
+			const elSpId = document.createElement("span");
 			const elIme = document.createElement("li");
 			const elPrezime = document.createElement("li");
 			const elProsek = document.createElement("li");
@@ -45,15 +72,18 @@ form.addEventListener("submit", (e) => {
 			const buttonSubmit = document.createElement("button");
 			buttonSubmit.type = "submit";
 			prom.setAttribute("class", "studenti__list-student");
-			buttonSubmit.setAttribute("class", "studenti__list-student--btn");
+			buttonSubmit.setAttribute("class", "studenti__list-student--btn deleteButton");
+			elSpId.setAttribute("class", "studentId");
 
-			elId.innerHTML += "Broj Indeksa: " + data.id;
+			elSpId.innerHTML += data.id;
+			elId.innerHTML += "Broj Indeksa: ";
 			elIme.innerHTML += "Ime: " + data.ime;
 			elPrezime.innerHTML += "Prezime: " + data.prezime;
 			elProsek.innerHTML += "Prosek: " + data.prosek;
 			buttonSubmit.innerHTML += "Delete";
 
 			wrap.appendChild(prom);
+			elId.appendChild(elSpId);
 			prom.appendChild(elId);
 			prom.appendChild(elIme);
 			prom.appendChild(elPrezime);
@@ -67,6 +97,8 @@ form.addEventListener("submit", (e) => {
 			//console.log(elLiDugme);
 
 			parent.appendChild(wrap);
+
+			deleteButtonClick(buttonSubmit);
 
 			/*
 				"<li> <ul> <li> Broj Indeksa: " +
