@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+	background-image: url("1.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+.studenti {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	column-gap: 20px;
+	row-gap: 10px;
+	background-color: rgba(51, 204, 51, 0.5);
+
+	padding-bottom: 20px;
+	border-radius: 10px;
+	list-style-type: none;
+	padding-right: 30px;
+}
+
+.studenti__list-student {
+	margin-top: 10px;
+	font-family: "Lucida Console", "Courier New", monospace;
+	font-size: 20px;
+	list-style-type: none;
+	border-style: solid;
+	border-radius: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.studenti__list-student--btn {
+	align-items: center;
+	appearance: none;
+	background-color: #fcfcfd;
+	border-radius: 4px;
+	border-width: 0;
+	box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+	box-sizing: border-box;
+	color: #36395a;
+	cursor: pointer;
+	display: inline-flex;
+	font-family: "JetBrains Mono", monospace;
+	height: 48px;
+	justify-content: center;
+	line-height: 1;
+	list-style: none;
+	overflow: hidden;
+	padding-left: 16px;
+	padding-right: 16px;
+	position: relative;
+	text-align: left;
+	text-decoration: none;
+	transition: box-shadow 0.15s, transform 0.15s;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	white-space: nowrap;
+	will-change: box-shadow, transform;
+	font-size: 18px;
+	margin-top: 10px;
+}
+
+.forma {
+	margin-left: 50%;
+	transform: translateX(-50%);
+	max-width: 100%;
+	width: 50%;
+	align-self: center;
+	background-color: rgba(191, 191, 191, 0.8);
+	border-radius: 10px;
+}
+
+.forma__input {
+	margin-left: 50%;
+	transform: translateX(-50%);
+	width: clamp(120px, 50vw, 420px);
+	height: 2.5rem;
+	padding: 0 1.25rem;
+	border: 1px solid $black;
+	border-radius: 2px;
+
+	transition: all 250ms;
+}
+
+.forma__input::-webkit-input-placeholder {
+	font-family: "Lucida Console", "Courier New", monospace;
+	margin-left: 45%;
+}
+
+.forma__label {
+	font-family: "Lucida Console", "Courier New", monospace;
+	font-size: 20px;
+	margin-left: 35%;
+	margin-bottom: 20px;
+	color: $grey;
+	display: block;
+	transform-origin: 0 0; /* Used later for transitions */
+	transition: all 500ms;
+	padding-top: 10px;
+}
+.forma__btnsubmit {
+	background-color: #13aa52;
+	border: 1px solid #13aa52;
+	border-radius: 4px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+	box-sizing: border-box;
+	color: #fff;
+	cursor: pointer;
+	font-family: "Lucida Console", "Courier New", monospace;
+	font-size: 16px;
+	font-weight: 400;
+	outline: none;
+	outline: 0;
+	padding: 10px 25px;
+	text-align: center;
+	transform: translateY(0);
+	transition: transform 150ms, box-shadow 150ms;
+	user-select: none;
+	-webkit-user-select: none;
+	margin-bottom: 20px;
+	margin-left: 50%;
+	transform: translateX(-80%);
+}
+.forma__btnsubmit:hover {
+	box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
